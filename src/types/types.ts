@@ -4,4 +4,6 @@ export interface Verse {
   reference: string;
   lesson: string;
   isApproved: boolean;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
