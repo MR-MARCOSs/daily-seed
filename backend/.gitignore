@@ -2,6 +2,7 @@ node_modules/
 dist/
 .env
 *.log
+.env.example
 .DS_Store
 coverage/
 .nyc_output/

@@ -16,6 +16,7 @@ export class PostgresVerseRepository implements IVerseRepository {
 
   async create(data: CreateVerseData): Promise<Verse> {
     const result = await db.insert(verses).values(data).returning();
+    if (!result[0]) throw new Error('Falha ao criar versículo');
     return result[0];
   }
 
@@ -34,6 +35,6 @@ export class PostgresVerseRepository implements IVerseRepository {
 
   async delete(id: string): Promise<boolean> {
     const result = await db.delete(verses).where(eq(verses.id, id));
-    return result.rowCount > 0;
+    return (result.rowCount || 0) > 0;
   }
 }

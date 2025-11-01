@@ -32,6 +32,10 @@ export class AdminController {
   async approveVerse(req: Request, res: Response): Promise<void> {
     try {
       const { id } = req.params;
+      if (!id) {
+        res.status(400).json({ error: 'ID é obrigatório' });
+        return;
+      }
       const verse = await this.approveVerseUseCase.execute(id);
       
       if (!verse) {
@@ -48,6 +52,10 @@ export class AdminController {
   async rejectVerse(req: Request, res: Response): Promise<void> {
     try {
       const { id } = req.params;
+      if (!id) {
+        res.status(400).json({ error: 'ID é obrigatório' });
+        return;
+      }
       const deleted = await this.rejectVerseUseCase.execute(id);
       
       if (!deleted) {

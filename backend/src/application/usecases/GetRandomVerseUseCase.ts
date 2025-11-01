@@ -9,6 +9,6 @@ export class GetRandomVerseUseCase {
     if (verses.length === 0) return null;
     
     const randomIndex = Math.floor(Math.random() * verses.length);
-    return verses[randomIndex];
+    return verses[randomIndex] || null;
   }
 }
